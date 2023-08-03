@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source ./script/settings
+
+gcloud container clusters delete "$CLUSTER_NAME" \
+    --zone="$COMPUTE_ZONE"

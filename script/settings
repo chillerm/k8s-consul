@@ -1,0 +1,9 @@
+#!/bin/bash
+
+export CLUSTER_NAME="k8s-consul"
+export RELEASE_CHANNEL="stable"
+export COMPUTE_ZONE="us-east1-b"
+
+export CONSUL_NAMESPACE=consul
+
+gcloud config set project chillerm

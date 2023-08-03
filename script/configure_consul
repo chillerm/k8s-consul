@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source ./script/settings
+
+gcloud container clusters get-credentials "$CLUSTER_NAME" \
+    --zone "$COMPUTE_ZONE"
+
+helm repo add hashicorp https://helm.releases.hashicorp.com
+
+helm repo update
+
+helm install --values values.yaml consul hashicorp/consul --create-namespace --namespace "$CONSUL_NAMESPACE" --version "1.0.0"

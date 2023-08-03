@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -eo pipefail
+
+echo "Sourcing environment..."
+source ./script/settings
+
+echo "creating Cluster"
+gcloud container clusters create "$CLUSTER_NAME" \
+    --release-channel "$RELEASE_CHANNEL" \
+    --zone "$COMPUTE_ZONE" \
+    --node-locations "$COMPUTE_ZONE"
