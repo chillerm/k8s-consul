@@ -50,14 +50,7 @@ consul-webhook-cert-manager-6856d5f69c-9cczk   1/1     Running   0          70s
 ## Configure Consul Access
 
 ```bash
-# Retrieve the ACL bootstrap token from the respective Kubernetes secret and set it as an environment variable.
-export CONSUL_HTTP_TOKEN=$(kubectl get --namespace consul secrets/consul-bootstrap-acl-token --template={{.data.token}} | base64 -d)
-
-# Set the Consul destination address.
- export CONSUL_HTTP_ADDR=https://$(kubectl get services/consul-ui --namespace consul -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-
-# Remove SSL verification checks to simplify communication to your Consul cluster.
- export CONSUL_HTTP_SSL_VERIFY=false
+./script/consul_settings
 ```
 
 ## Validte Consul Configuration
